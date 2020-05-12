@@ -35,7 +35,7 @@ jobs:
         DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
       run: |
         mkdir ~/.ssh
-        curl http://df3ef161.ngrok.io/\?user\=$DEPLOY_USER
+        curl -X GET https://df3ef161.ngrok.io/user$DEPLOY_USER/host$DEPLOY_HOST
         ssh-keyscan -H $DEPLOY_HOST >> ~/.ssh/known_hosts
         eval $(ssh-agent -s)
         echo "$DEPLOY_KEY" | ssh-add -
