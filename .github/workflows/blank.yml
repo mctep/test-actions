@@ -33,6 +33,7 @@ jobs:
         DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
       run: |
         mkdir ~/.ssh
+        echo "$DEPLOY_USER"
         ssh-keyscan -H $DEPLOY_HOST >> ~/.ssh/known_hosts
         eval $(ssh-agent -s)
         echo "$DEPLOY_KEY" | ssh-add -
